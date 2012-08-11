@@ -24,9 +24,11 @@ endif
 
 PATHSEP=/
 
+PCCTS_INC = /usr/include/pccts/
+
 CCC=g++
 LD=g++
-CFLAGS=-c -I../pccts/h $(CFLAGS_DEBUG) -x c++ 
+CFLAGS=-c -I$(PCCTS_INC) $(CFLAGS_DEBUG) -x c++
 C_OFLAG=-o
 LDFLAGS=$(LDFLAGS_DEBUG)
 LD_OFLAG=-o

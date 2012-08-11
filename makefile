@@ -8,10 +8,7 @@
 
 .PHONY : pccts cccc test install
 
-all : pccts cccc test install
-
-pccts :
-	cd pccts ; make
+all : cccc test install
 
 cccc : 
 	cd cccc ; make -f posixgcc.mak

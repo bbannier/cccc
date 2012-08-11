@@ -31,16 +31,15 @@
 
 # PCCTS is now packaged as part of the CCCC distribution.
 PCCTS=..$(PATHSEP)pccts
-PCCTS_H=$(PCCTS)$(PATHSEP)h
 PCCTS_BIN=$(PCCTS)$(PATHSEP)bin
 # PCCTS_OBJDIR needs to be defined in the platform-specific makefile
-# as some compilers put the obj file in $(PCCTS_H), others put it
+# as some compilers put the obj file in $(PCCTS_INC), others put it
 # in the current directory.
 
 # locations and flags for antlr and dlg (don't change the flags unless you 
 # understand PCCTS)
-ANTLR =         $(PCCTS_BIN)$(PATHSEP)antlr
-DLG =           $(PCCTS_BIN)$(PATHSEP)dlg
+ANTLR =         `which antlr`
+DLG =           `which dlg`
 # Flags for ANTLR:
 # -CC       = generate C++ output
 # -k 2      = use at least 2 tokens of lookahead
@@ -164,14 +163,14 @@ ccccmain.$(OBJEXT) : ccccmain.cc
 # to cover this is to add explicit rules for the three
 # PCCTS support files which give rise to linkable object
 # files.
-AParser.$(OBJEXT): $(PCCTS_H)$(PATHSEP)AParser.cpp
-	$(CCC) $(CFLAGS) $(PCCTS_H)$(PATHSEP)AParser.cpp $(C_OFLAG)$*.$(OBJEXT)
+AParser.$(OBJEXT): $(PCCTS_INC)$(PATHSEP)AParser.cpp
+	$(CCC) $(CFLAGS) $(PCCTS_INC)$(PATHSEP)AParser.cpp $(C_OFLAG)$*.$(OBJEXT)
 
-DLexerBase.$(OBJEXT): $(PCCTS_H)$(PATHSEP)DLexerBase.cpp
-	$(CCC) $(CFLAGS) $(PCCTS_H)$(PATHSEP)DLexerBase.cpp $(C_OFLAG)$*.$(OBJEXT)
+DLexerBase.$(OBJEXT): $(PCCTS_INC)$(PATHSEP)DLexerBase.cpp
+	$(CCC) $(CFLAGS) $(PCCTS_INC)$(PATHSEP)DLexerBase.cpp $(C_OFLAG)$*.$(OBJEXT)
 
-ATokenBuffer.$(OBJEXT): $(PCCTS_H)$(PATHSEP)ATokenBuffer.cpp
-	$(CCC) $(CFLAGS) $(PCCTS_H)$(PATHSEP)ATokenBuffer.cpp $(C_OFLAG)$*.$(OBJEXT)
+ATokenBuffer.$(OBJEXT): $(PCCTS_INC)$(PATHSEP)ATokenBuffer.cpp
+	$(CCC) $(CFLAGS) $(PCCTS_INC)$(PATHSEP)ATokenBuffer.cpp $(C_OFLAG)$*.$(OBJEXT)
 
 
 
